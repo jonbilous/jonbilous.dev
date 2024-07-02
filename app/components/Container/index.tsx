@@ -1,9 +1,12 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, FlexProps } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 
-export default function Container({ children }: PropsWithChildren) {
+export default function Container({
+  children,
+  ...props
+}: PropsWithChildren<FlexProps>) {
   return (
-    <Flex flexDirection={"column"} flex={1} p={4}>
+    <Flex {...props} flex={1} mx="auto" maxW="800px" flexDirection={"column"}>
       {children}
     </Flex>
   );

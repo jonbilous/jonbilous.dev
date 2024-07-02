@@ -6,6 +6,7 @@ import {
 import { MetaFunction } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import Document from "./components/Document";
+import AppShell from "./components/Shell";
 import "./styles.css";
 import { DESCRIPTION, NAME } from "./utils/constants";
 
@@ -26,7 +27,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Outlet />
+      <AppShell>
+        <Outlet />
+      </AppShell>
     </ChakraProvider>
   );
 }
