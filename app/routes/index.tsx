@@ -15,8 +15,8 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <Flex position="relative" direction={"column"}>
-      <Flex bg="black" color="white" p={4} position={"sticky"} top={0}>
-        <Container>
+      <Flex bg="black" color="white" position={"sticky"} top={0}>
+        <Container p={4}>
           <Flex>
             <Heading as={"button"} mr="auto">
               {NAME}
@@ -31,7 +31,7 @@ export default function Index() {
         </Container>
       </Flex>
 
-      <Container py={8}>
+      <Container px={4} py={8}>
         <VStack spacing={16} alignItems={"stretch"}>
           <VStack
             scrollMarginTop={"100px"}
