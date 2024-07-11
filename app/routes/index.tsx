@@ -1,4 +1,5 @@
-import { Flex, HStack, Heading, VStack } from "@chakra-ui/react";
+import { DownloadIcon } from "@chakra-ui/icons";
+import { Flex, HStack, Heading, IconButton, VStack } from "@chakra-ui/react";
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import About from "~/components/About";
@@ -24,16 +25,26 @@ export default function Index() {
     <Flex position="relative" direction={"column"}>
       <Flex bg="black" color="white" position={"sticky"} top={0}>
         <Container p={4}>
-          <Flex>
+          <Flex alignItems={"center"}>
             <Heading as={"button"} mr="auto">
               {name}
             </Heading>
 
-            <HStack spacing={4}>
+            <HStack mr={4} spacing={4}>
               <Link to="/#about">About Me</Link>
               <Link to="/#work-experience">Work Experience</Link>
               <Link to="/#projects">Projects</Link>
             </HStack>
+
+            <IconButton
+              size="sm"
+              isRound
+              aria-label="Download Resume"
+              icon={<DownloadIcon />}
+              as="a"
+              href="/resume"
+              download={"jon-bilous-resume.pdf"}
+            />
           </Flex>
         </Container>
       </Flex>
