@@ -1,15 +1,14 @@
-import { DownloadIcon } from "@chakra-ui/icons";
-import { Flex, HStack, Heading, IconButton, VStack } from "@chakra-ui/react";
+import { Flex, VStack } from "@chakra-ui/react";
 import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
 import About from "~/components/About";
 import Container from "~/components/Container";
 import ContentBlock from "~/components/ContentBlock";
 import Footer from "~/components/Footer";
+import Navigation from "~/components/Navigation";
 import ProjectList from "~/components/ProjectList";
 import WorkExperience from "~/components/WorkExperience";
 import { about } from "~/content/about";
-import { name, seo } from "~/content/general";
+import { seo } from "~/content/general";
 import { projects } from "~/content/projects";
 import { workExperience } from "~/content/work-experience";
 
@@ -23,31 +22,13 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <Flex position="relative" direction={"column"}>
-      <Flex bg="black" color="white" position={"sticky"} top={0}>
-        <Container p={4}>
-          <Flex alignItems={"center"}>
-            <Heading as={"button"} mr="auto">
-              {name}
-            </Heading>
-
-            <HStack mr={4} spacing={4}>
-              <Link to="/#about">About Me</Link>
-              <Link to="/#work-experience">Work Experience</Link>
-              <Link to="/#projects">Projects</Link>
-            </HStack>
-
-            <IconButton
-              size="sm"
-              isRound
-              aria-label="Download Resume"
-              icon={<DownloadIcon />}
-              as="a"
-              href="/resume"
-              download={"jon-bilous-resume.pdf"}
-            />
-          </Flex>
-        </Container>
-      </Flex>
+      <Navigation
+        items={[
+          { label: "About Me", to: "/#about" },
+          { label: "Work Experience", to: "/#work-experience" },
+          { label: "Projects", to: "/#projects" },
+        ]}
+      />
 
       <Container px={4} py={8}>
         <VStack spacing={16} alignItems={"stretch"}>

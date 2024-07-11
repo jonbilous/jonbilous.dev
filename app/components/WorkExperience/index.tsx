@@ -13,7 +13,7 @@ const ExperienceItem = ({ item }: { item: IWorkExperience }) => {
   return (
     <VStack spacing={4} alignItems={"start"}>
       <Flex alignItems={"center"} alignSelf={"stretch"}>
-        <Heading mr="auto" size="lg">
+        <Heading mr="auto" size="md">
           {item.company}
         </Heading>
         <Text>{item.location}</Text>

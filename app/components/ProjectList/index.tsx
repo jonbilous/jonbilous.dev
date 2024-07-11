@@ -8,7 +8,7 @@ const Project = ({ project }: { project: IProject }) => {
 
   return (
     <VStack alignItems={"start"}>
-      <Heading as="a" target="_blank" href={project.url} size="lg">
+      <Heading as="a" target="_blank" href={project.url} size="md">
         {project.name}
       </Heading>
 
