@@ -1,14 +1,38 @@
-import { Heading, Text, VStack } from "@chakra-ui/react";
-import { IWorkExperience } from "~/data/work-experience";
+import {
+  Flex,
+  Heading,
+  ListItem,
+  Text,
+  UnorderedList,
+  VStack,
+} from "@chakra-ui/react";
+import { IWorkExperience } from "~/content/work-experience";
+import TagList from "../TagList";
 
 const ExperienceItem = ({ item }: { item: IWorkExperience }) => {
   return (
-    <VStack alignItems={"start"}>
-      <Heading size="lg">{item.company}</Heading>
-      <Text>{item.title}</Text>
-      <Text>
-        {item.startDate} - {item.endDate}
-      </Text>
+    <VStack spacing={4} alignItems={"start"}>
+      <Flex alignItems={"center"} alignSelf={"stretch"}>
+        <Heading mr="auto" size="lg">
+          {item.company}
+        </Heading>
+        <Text>{item.location}</Text>
+      </Flex>
+
+      <Flex alignItems={"center"} alignSelf={"stretch"}>
+        <Text mr="auto">{item.title}</Text>
+        <Text>
+          {item.startDate} - {item.endDate}
+        </Text>
+      </Flex>
+
+      <UnorderedList>
+        {item.description.map((desc) => {
+          return <ListItem key={desc}>{desc}</ListItem>;
+        })}
+      </UnorderedList>
+
+      <TagList tags={item.technologies} />
     </VStack>
   );
 };

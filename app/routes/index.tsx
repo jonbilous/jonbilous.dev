@@ -1,15 +1,22 @@
-import { Flex, HStack, Heading, Text, VStack } from "@chakra-ui/react";
+import { Flex, HStack, Heading, VStack } from "@chakra-ui/react";
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import About from "~/components/About";
 import Container from "~/components/Container";
+import ContentBlock from "~/components/ContentBlock";
+import Footer from "~/components/Footer";
 import ProjectList from "~/components/ProjectList";
 import WorkExperience from "~/components/WorkExperience";
-import { projects } from "~/data/projects";
-import { workExperience } from "~/data/work-experience";
-import { DESCRIPTION, NAME } from "~/utils/constants";
+import { about } from "~/content/about";
+import { name, seo } from "~/content/general";
+import { projects } from "~/content/projects";
+import { workExperience } from "~/content/work-experience";
 
 export const meta: MetaFunction = () => {
-  return [{ title: NAME }, { name: "description", content: DESCRIPTION }];
+  return [
+    { title: seo.title },
+    { name: "description", content: seo.description },
+  ];
 };
 
 export default function Index() {
@@ -19,7 +26,7 @@ export default function Index() {
         <Container p={4}>
           <Flex>
             <Heading as={"button"} mr="auto">
-              {NAME}
+              {name}
             </Heading>
 
             <HStack spacing={4}>
@@ -33,40 +40,21 @@ export default function Index() {
 
       <Container px={4} py={8}>
         <VStack spacing={16} alignItems={"stretch"}>
-          <VStack
-            scrollMarginTop={"100px"}
-            id="about"
-            spacing={8}
-            alignItems={"stretch"}
-          >
-            <Heading>About Me</Heading>
-            <Text>
-              I am JOn I am JOn I am JOn I am JOn I am JOn I am JOn I am JOn I
-              am JOn I am JOn I am JOn I am JOnI am JOn
-            </Text>
-          </VStack>
+          <ContentBlock id="about" title="About Me">
+            <About content={about} />
+          </ContentBlock>
 
-          <VStack
-            scrollMarginTop={"100px"}
-            id="work-experience"
-            spacing={8}
-            alignItems={"stretch"}
-          >
-            <Heading>Work Experience</Heading>
+          <ContentBlock id="work-experience" title="Work Experience">
             <WorkExperience experience={workExperience} />
-          </VStack>
+          </ContentBlock>
 
-          <VStack
-            scrollMarginTop={"100px"}
-            id="projects"
-            spacing={8}
-            alignItems={"stretch"}
-          >
-            <Heading>Projects</Heading>
+          <ContentBlock title={"Projects"} id="projects">
             <ProjectList projects={projects} />
-          </VStack>
+          </ContentBlock>
         </VStack>
       </Container>
+
+      <Footer />
     </Flex>
   );
 }

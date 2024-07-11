@@ -1,23 +1,17 @@
-import {
-  ChakraProvider,
-  ComponentStyleConfig,
-  extendTheme,
-} from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import { MetaFunction } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import Document from "./components/Document";
 import AppShell from "./components/Shell";
+import { seo } from "./content/general";
 import "./styles.css";
-import { DESCRIPTION, NAME } from "./utils/constants";
-
-const Heading: ComponentStyleConfig = {
-  baseStyle: { fontWeight: "900" },
-};
-
-const theme = extendTheme({ components: { Heading } });
+import { theme } from "./utils/theme";
 
 export const meta: MetaFunction = () => {
-  return [{ title: NAME }, { name: "description", content: DESCRIPTION }];
+  return [
+    { title: seo.title },
+    { name: "description", content: seo.description },
+  ];
 };
 
 export function Layout({ children }: { children: React.ReactNode }) {

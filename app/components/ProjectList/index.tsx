@@ -1,14 +1,7 @@
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import {
-  Heading,
-  Link,
-  Tag,
-  Text,
-  VStack,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react";
-import { IProject } from "~/data/projects";
+import { Heading, Link, Text, VStack } from "@chakra-ui/react";
+import { IProject } from "~/content/projects";
+import TagList from "../TagList";
 
 const Project = ({ project }: { project: IProject }) => {
   const urlLabel = new URL(project.url).hostname;
@@ -31,15 +24,8 @@ const Project = ({ project }: { project: IProject }) => {
 
       <Text>{project.description}</Text>
       <Text>Deployed to {project.deployment.join(", ")}</Text>
-      <Wrap>
-        {project.stack.map((item) => {
-          return (
-            <WrapItem key={item}>
-              <Tag>{item}</Tag>
-            </WrapItem>
-          );
-        })}
-      </Wrap>
+
+      <TagList tags={project.stack} />
     </VStack>
   );
 };
