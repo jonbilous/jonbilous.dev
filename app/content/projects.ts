@@ -26,8 +26,8 @@ export const projects: IProject[] = [
     deployment: ["Vercel"],
   },
   {
-    url: "https://www.shutter-speed.org",
-    name: "Shutter/Speed",
+    url: "https://www.framer.art",
+    name: "framer.art",
     description: "Art print marketplace",
     stack: [
       "Remix",
@@ -44,7 +44,7 @@ export const projects: IProject[] = [
     deployment: ["Vercel", "Fly.io"],
   },
   {
-    url: "https://www.ontheroadside.com",
+    url: "https://www.theamericanaproject.com",
     name: "On the Roadside",
     stack: [
       "Remix",
